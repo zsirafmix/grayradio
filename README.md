@@ -4,7 +4,7 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 
 **App name:** ZsirafGrayRadio  
 **Package:** `com.grayradio.app`  
-**Version:** 1.2.0  
+**Version:** 1.3.0  
 **Repo:** https://github.com/zsirafmix/grayradio
 
 **Brand logo:** Custom grayscale giraffe/radio mark used as the launcher icon (adaptive + density mipmaps) and as a small circular brand mark in the TopAppBar.
@@ -16,6 +16,8 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 - Országválasztó + stílus/tag szűrő (Radio Browser)
 - Kedvencek (csillag a csempén / hosszú nyomás); Room `isFavorite` + migráció v1→v2
 - Play / pause with bottom now-playing bar
+- Background playback via Media3 MediaSessionService (notification shade controls: play/pause/stop, station title, brand artwork)
+- Status-bar media notification icon; POST_NOTIFICATIONS requested on first play (Android 13+)
 - Add stations manually (name + stream URL)
 - Search / add from [Radio Browser API](https://api.radio-browser.info/) (`https://de1.api.radio-browser.info`, User-Agent `ZsirafGrayRadio/1.1`)
 - Edit / delete via long-press or tile menu
@@ -35,7 +37,7 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 ## Tech stack
 
 - Kotlin, Jetpack Compose, Material 3
-- Media3 ExoPlayer
+- Media3 ExoPlayer + MediaSession / MediaSessionService
 - Room + Coroutines / Flow + ViewModel
 - OkHttp + Coil (grayscale logos)
 - minSdk 26 · targetSdk / compileSdk 35 · Gradle Kotlin DSL
@@ -74,7 +76,7 @@ Debug APK: `app/build/outputs/apk/debug/app-debug.apk`
 ```
 app/src/main/java/com/grayradio/app/
   data/          Room entity/DAO/DB, Radio Browser API, repository
-  player/        ExoPlayer wrapper
+  player/        MediaSessionService + MediaController facade
   ui/            Compose screens, theme, ViewModel
   GrayRadioApp.kt
   MainActivity.kt

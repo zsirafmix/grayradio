@@ -50,4 +50,6 @@
     <string name="select_style">Stílus választása</string>
     <string name="stations_count">%1$d állomás</string>
     <string name="refresh">Frissítés</string>
+    <string name="notification_channel_name">Rádió lejátszás</string>
+    <string name="notification_stop">Leállítás</string>
 </resources>
