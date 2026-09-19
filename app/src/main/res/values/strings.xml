@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Szürke Rádió</string>
+    <string name="stations_title">Állomások</string>
+    <string name="add_station">Állomás hozzáadása</string>
+    <string name="station_name">Név</string>
+    <string name="stream_url">Stream URL</string>
+    <string name="save">Mentés</string>
+    <string name="cancel">Mégse</string>
+    <string name="delete">Törlés</string>
+    <string name="edit">Szerkesztés</string>
+    <string name="play">Lejátszás</string>
+    <string name="pause">Szünet</string>
+    <string name="search_radio_browser">Keresés a Radio Browserben</string>
+    <string name="search_hint">Állomás neve…</string>
+    <string name="search_hu">Magyar állomások</string>
+    <string name="search">Keresés</string>
+    <string name="add">Hozzáadás</string>
+    <string name="manual_add">Manuális hozzáadás</string>
+    <string name="now_playing">Most szól</string>
+    <string name="stream_error">Hiba a stream lejátszásakor</string>
+    <string name="empty_stations">Még nincsenek állomások</string>
+    <string name="name_required">Add meg az állomás nevét</string>
+    <string name="url_required">Add meg a stream URL-t</string>
+    <string name="invalid_url">Érvénytelen URL (http/https)</string>
+    <string name="already_added">Ez az állomás már hozzá van adva</string>
+    <string name="station_added">Állomás hozzáadva</string>
+    <string name="station_deleted">Állomás törölve</string>
+    <string name="station_updated">Állomás frissítve</string>
+    <string name="searching">Keresés…</string>
+    <string name="no_results">Nincs találat</string>
+    <string name="search_error">Keresési hiba</string>
+    <string name="confirm_delete">Törlöd ezt az állomást?</string>
+    <string name="playing">Lejátszás…</string>
+    <string name="loading">Betöltés…</string>
+</resources>
