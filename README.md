@@ -4,7 +4,10 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 
 **App name:** ZsirafGrayRadio  
 **Package:** `com.grayradio.app`  
+**Version:** 1.2.0  
 **Repo:** https://github.com/zsirafmix/grayradio
+
+**Brand logo:** Custom grayscale giraffe/radio mark used as the launcher icon (adaptive + density mipmaps) and as a small circular brand mark in the TopAppBar.
 
 ## Features
 
