@@ -20,6 +20,8 @@
     <string name="now_playing">Most szól</string>
     <string name="stream_error">Hiba a stream lejátszásakor</string>
     <string name="empty_stations">Még nincsenek állomások</string>
+    <string name="empty_favorites">Még nincsenek kedvencek</string>
+    <string name="empty_browse">Nincs találat ehhez a szűréshez</string>
     <string name="name_required">Add meg az állomás nevét</string>
     <string name="url_required">Add meg a stream URL-t</string>
     <string name="invalid_url">Érvénytelen URL (http/https)</string>
@@ -30,7 +32,22 @@
     <string name="searching">Keresés…</string>
     <string name="no_results">Nincs találat</string>
     <string name="search_error">Keresési hiba</string>
+    <string name="browse_error">Böngészési hiba</string>
     <string name="confirm_delete">Törlöd ezt az állomást?</string>
     <string name="playing">Lejátszás…</string>
     <string name="loading">Betöltés…</string>
+    <string name="tab_saved">Mentett</string>
+    <string name="tab_favorites">Kedvencek</string>
+    <string name="tab_browse">Böngésző</string>
+    <string name="country">Ország</string>
+    <string name="style">Stílus</string>
+    <string name="all_styles">Összes</string>
+    <string name="add_favorite">Kedvencekhez</string>
+    <string name="remove_favorite">Kedvencből törlés</string>
+    <string name="favorite_added">Hozzáadva a kedvencekhez</string>
+    <string name="favorite_removed">Eltávolítva a kedvencekből</string>
+    <string name="select_country">Ország választása</string>
+    <string name="select_style">Stílus választása</string>
+    <string name="stations_count">%1$d állomás</string>
+    <string name="refresh">Frissítés</string>
 </resources>

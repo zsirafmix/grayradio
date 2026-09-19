@@ -62,7 +62,7 @@ class RadioPlayer(context: Context) {
     fun play(station: Station) {
         val exo = ensurePlayer()
         val current = _state.value.station
-        if (current?.id == station.id && exo.playbackState != Player.STATE_IDLE) {
+        if (current?.streamUrl == station.streamUrl && exo.playbackState != Player.STATE_IDLE) {
             exo.playWhenReady = true
             exo.play()
             _state.update { it.copy(station = station, errorMessage = null) }

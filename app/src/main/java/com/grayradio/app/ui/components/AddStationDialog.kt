@@ -16,6 +16,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -59,7 +61,9 @@ fun StationEditorDialog(
     onSearchByName: () -> Unit,
     onSearchHungarian: () -> Unit,
     onAddRemote: (RemoteStation) -> Unit,
+    onFavoriteRemote: (RemoteStation) -> Unit,
     onClearSearch: () -> Unit,
+    favoriteUrls: Set<String> = emptySet(),
 ) {
     var name by remember { mutableStateOf(initial?.name.orEmpty()) }
     var url by remember { mutableStateOf(initial?.streamUrl.orEmpty()) }
@@ -171,7 +175,9 @@ fun StationEditorDialog(
                             items(searchState.results, key = { it.streamUrl }) { remote ->
                                 RemoteStationRow(
                                     remote = remote,
+                                    isFavorite = remote.streamUrl in favoriteUrls,
                                     onAdd = { onAddRemote(remote) },
+                                    onFavorite = { onFavoriteRemote(remote) },
                                 )
                             }
                         }
@@ -212,7 +218,9 @@ fun StationEditorDialog(
 @Composable
 private fun RemoteStationRow(
     remote: RemoteStation,
+    isFavorite: Boolean,
     onAdd: () -> Unit,
+    onFavorite: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -244,6 +252,15 @@ private fun RemoteStationRow(
                     overflow = TextOverflow.Ellipsis,
                 )
             }
+        }
+        IconButton(onClick = onFavorite) {
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
+                contentDescription = stringResource(
+                    if (isFavorite) R.string.remove_favorite else R.string.add_favorite,
+                ),
+                tint = Gray200,
+            )
         }
         IconButton(onClick = onAdd) {
             Icon(

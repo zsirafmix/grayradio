@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,8 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Radio
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -65,8 +68,10 @@ fun StationTile(
     isCurrent: Boolean,
     index: Int,
     onPlay: () -> Unit,
-    onEdit: () -> Unit,
-    onDelete: () -> Unit,
+    onToggleFavorite: () -> Unit,
+    onEdit: (() -> Unit)? = null,
+    onDelete: (() -> Unit)? = null,
+    showMenu: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
@@ -87,7 +92,13 @@ fun StationTile(
             )
             .combinedClickable(
                 onClick = onPlay,
-                onLongClick = { menuOpen = true },
+                onLongClick = {
+                    if (showMenu && (onEdit != null || onDelete != null)) {
+                        menuOpen = true
+                    } else {
+                        onToggleFavorite()
+                    }
+                },
             ),
     ) {
         if (!station.logoUrl.isNullOrBlank()) {
@@ -109,44 +120,77 @@ fun StationTile(
                 .fillMaxSize()
                 .padding(14.dp),
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Icon(
                     imageVector = Icons.Default.Radio,
                     contentDescription = null,
                     tint = Gray400,
-                    modifier = Modifier
-                        .size(28.dp)
-                        .align(Alignment.CenterStart),
+                    modifier = Modifier.size(28.dp),
                 )
-                Box(modifier = Modifier.align(Alignment.TopEnd)) {
-                    IconButton(
-                        onClick = { menuOpen = true },
-                        modifier = Modifier.size(32.dp),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = stringResource(R.string.edit),
-                            tint = Gray200,
-                        )
-                    }
-                    DropdownMenu(
-                        expanded = menuOpen,
-                        onDismissRequest = { menuOpen = false },
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.edit)) },
-                            onClick = {
-                                menuOpen = false
-                                onEdit()
-                            },
-                        )
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.delete)) },
-                            onClick = {
-                                menuOpen = false
-                                onDelete()
-                            },
-                        )
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(
+                    onClick = onToggleFavorite,
+                    modifier = Modifier.size(32.dp),
+                ) {
+                    Icon(
+                        imageVector = if (station.isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
+                        contentDescription = stringResource(
+                            if (station.isFavorite) R.string.remove_favorite else R.string.add_favorite,
+                        ),
+                        tint = Gray200,
+                    )
+                }
+                if (showMenu && (onEdit != null || onDelete != null)) {
+                    Box {
+                        IconButton(
+                            onClick = { menuOpen = true },
+                            modifier = Modifier.size(32.dp),
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.MoreVert,
+                                contentDescription = stringResource(R.string.edit),
+                                tint = Gray200,
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = menuOpen,
+                            onDismissRequest = { menuOpen = false },
+                        ) {
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        stringResource(
+                                            if (station.isFavorite) R.string.remove_favorite else R.string.add_favorite,
+                                        ),
+                                    )
+                                },
+                                onClick = {
+                                    menuOpen = false
+                                    onToggleFavorite()
+                                },
+                            )
+                            if (onEdit != null) {
+                                DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.edit)) },
+                                    onClick = {
+                                        menuOpen = false
+                                        onEdit()
+                                    },
+                                )
+                            }
+                            if (onDelete != null) {
+                                DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.delete)) },
+                                    onClick = {
+                                        menuOpen = false
+                                        onDelete()
+                                    },
+                                )
+                            }
+                        }
                     }
                 }
             }

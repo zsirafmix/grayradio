@@ -9,6 +9,9 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 ## Features
 
 - 2-column large grayscale station tiles
+- Tabs: **Mentett** | **Kedvencek** | **Böngésző**
+- Országválasztó + stílus/tag szűrő (Radio Browser)
+- Kedvencek (csillag a csempén / hosszú nyomás); Room `isFavorite` + migráció v1→v2
 - Play / pause with bottom now-playing bar
 - Add stations manually (name + stream URL)
 - Search / add from [Radio Browser API](https://api.radio-browser.info/) (`https://de1.api.radio-browser.info`, User-Agent `GrayRadio/1.0`)

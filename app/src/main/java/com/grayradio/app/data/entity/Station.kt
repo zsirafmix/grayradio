@@ -11,4 +11,7 @@ data class Station(
     val logoUrl: String? = null,
     val sortOrder: Int = 0,
     val createdAt: Long = System.currentTimeMillis(),
+    val isFavorite: Boolean = false,
+    val countryCode: String? = null,
+    val tags: String? = null,
 )

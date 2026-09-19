@@ -14,6 +14,9 @@ interface StationDao {
     @Query("SELECT * FROM stations ORDER BY sortOrder ASC, name ASC")
     fun observeAll(): Flow<List<Station>>
 
+    @Query("SELECT * FROM stations WHERE isFavorite = 1 ORDER BY name ASC")
+    fun observeFavorites(): Flow<List<Station>>
+
     @Query("SELECT COUNT(*) FROM stations")
     suspend fun count(): Int
 
@@ -37,4 +40,7 @@ interface StationDao {
 
     @Query("DELETE FROM stations WHERE id = :id")
     suspend fun deleteById(id: Long)
+
+    @Query("UPDATE stations SET isFavorite = :favorite WHERE id = :id")
+    suspend fun setFavorite(id: Long, favorite: Boolean)
 }
