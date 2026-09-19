@@ -129,7 +129,7 @@ class RadioBrowserApi(
 
     companion object {
         const val BASE = "https://de1.api.radio-browser.info"
-        const val USER_AGENT = "GrayRadio/1.0"
+        const val USER_AGENT = "ZsirafGrayRadio/1.1"
 
         val CURATED_GENRES: List<GenreOption> = listOf(
             GenreOption("rock", "Rock"),

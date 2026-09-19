@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Szürke Rádió</string>
+    <string name="app_name">ZsirafGrayRadio</string>
     <string name="stations_title">Állomások</string>
     <string name="add_station">Állomás hozzáadása</string>
     <string name="station_name">Név</string>

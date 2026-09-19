@@ -1,8 +1,8 @@
-# Szürke Rádió (GrayRadio)
+# ZsirafGrayRadio
 
 Grayscale Android internet radio player — large tile grid, Room persistence, Media3 ExoPlayer, and Radio Browser search.
 
-**App name:** Szürke Rádió  
+**App name:** ZsirafGrayRadio  
 **Package:** `com.grayradio.app`  
 **Repo:** https://github.com/zsirafmix/grayradio
 
@@ -14,7 +14,7 @@ Grayscale Android internet radio player — large tile grid, Room persistence, M
 - Kedvencek (csillag a csempén / hosszú nyomás); Room `isFavorite` + migráció v1→v2
 - Play / pause with bottom now-playing bar
 - Add stations manually (name + stream URL)
-- Search / add from [Radio Browser API](https://api.radio-browser.info/) (`https://de1.api.radio-browser.info`, User-Agent `GrayRadio/1.0`)
+- Search / add from [Radio Browser API](https://api.radio-browser.info/) (`https://de1.api.radio-browser.info`, User-Agent `ZsirafGrayRadio/1.1`)
 - Edit / delete via long-press or tile menu
 - Stations persisted with Room; seeded on first launch
 - Strict black / white / gray Material 3 theme (logos desaturated)

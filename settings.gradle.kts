@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GrayRadio"
+rootProject.name = "ZsirafGrayRadio"
 include(":app")
